@@ -1,0 +1,87 @@
+Using top_down_rule_choice grammar:
+s --> np,vp
+s --> sadv,s
+np --> [john]
+np --> det,n
+np --> n
+vp --> iv
+iv --> [walks]
+sadv --> [maybe]
+det --> [the]
+n --> [man]
+n --> [men]
+initial(s)
+enter the string to be checked maybe john walks
+input is maybe john walks
+WORDS: maybe john walks  STACK: s 
+WORDS: maybe john walks  STACK: np vp 
+WORDS: maybe john walks  STACK: det n vp 
+BACKTRACKING to use of rule: np --> det,n
+1 WORDS: maybe john walks STACK: np vp 
+WORDS: maybe john walks  STACK: n vp 
+BACKTRACKING to use of rule: s --> np,vp
+0 WORDS: maybe john walks STACK: s 
+WORDS: maybe john walks  STACK: sadv s 
+WORDS: john walks  STACK: s 
+WORDS: john walks  STACK: np vp 
+WORDS: walks  STACK: vp 
+WORDS: walks  STACK: iv 
+WORDS:  STACK: 
+yep
+enter the string to be checked
+
+Using other grammar
+0:s --> np,vp
+1:np --> det,n
+2:det --> [the]
+3:n --> [man]
+4:n --> [dog]
+5:vp --> tv,np
+6:tv --> [hit]
+initial is s
+enter the string to be checked the man hit the dog
+input is the man hit the dog
+WORDS: the man hit the dog  STACK: s 
+WORDS: the man hit the dog  STACK: np vp 
+WORDS: the man hit the dog  STACK: det n vp 
+WORDS: man hit the dog  STACK: n vp 
+WORDS: hit the dog  STACK: vp 
+WORDS: hit the dog  STACK: tv np 
+WORDS: the dog  STACK: np 
+WORDS: the dog  STACK: det n 
+WORDS: dog  STACK: n 
+WORDS:  STACK: 
+yep
+enter the string to be checked the man dog      
+input is the man dog
+WORDS: the man dog  STACK: s 
+WORDS: the man dog  STACK: np vp 
+WORDS: the man dog  STACK: det n vp 
+WORDS: man dog  STACK: n vp 
+WORDS: dog  STACK: vp 
+WORDS: dog  STACK: tv np 
+nope
+enter the string to be checked the dog hit the man
+input is the dog hit the man
+WORDS: the dog hit the man  STACK: s 
+WORDS: the dog hit the man  STACK: np vp 
+WORDS: the dog hit the man  STACK: det n vp 
+WORDS: dog hit the man  STACK: n vp 
+WORDS: hit the man  STACK: vp 
+WORDS: hit the man  STACK: tv np 
+WORDS: the man  STACK: np 
+WORDS: the man  STACK: det n 
+WORDS: man  STACK: n 
+WORDS:  STACK: 
+yep
+enter the string to be checked the dog hit
+input is the dog hit
+WORDS: the dog hit  STACK: s 
+WORDS: the dog hit  STACK: np vp 
+WORDS: the dog hit  STACK: det n vp 
+WORDS: dog hit  STACK: n vp 
+WORDS: hit  STACK: vp 
+WORDS: hit  STACK: tv np 
+WORDS:  STACK: np 
+nope
+enter the string to be checked 

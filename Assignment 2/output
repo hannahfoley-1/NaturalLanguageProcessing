@@ -1,0 +1,260 @@
+0:s --> np,vp
+1:s --> vp,np
+2:s --> np,rp,vp
+3:np --> np,rp,vp
+4:np --> det,n
+5:np --> n
+6:vp --> np,tv
+7:vp --> tv,np
+8:vp --> tv,n
+9:n --> [Alice]
+10:n --> [Bob]
+11:n --> [Carol]
+12:n --> [people]
+13:n --> [person]
+14:tv --> [kissed]
+15:tv --> [ignored]
+16:det --> [three]
+17:det --> [the]
+18:rp --> [that]
+initial is s
+*************************************
+pos test 0 Alice kissed Bob
+s
+|___vp
+|   |___np
+|   |   |___n
+|   |       |___[Alice]
+|   |   
+|   |___tv
+|       |___[kissed]
+|   
+|___np
+    |___n
+        |___[Bob]
+YEP pos
+*************************************
+neg test 1 Alice kissed ignored Bob
+YEP neg
+*************************************
+pos test 2 three people kissed Bob
+s
+|___vp
+|   |___np
+|   |   |___det
+|   |   |   |___[three]
+|   |   |   
+|   |   |___n
+|   |       |___[people]
+|   |   
+|   |___tv
+|       |___[kissed]
+|   
+|___np
+    |___n
+        |___[Bob]
+YEP pos
+*************************************
+neg test 3 kissed Bob
+YEP neg
+*************************************
+neg test 4 three three people kissed Bob
+YEP neg
+*************************************
+pos test 5 Alice ignored three people
+s
+|___vp
+|   |___np
+|   |   |___n
+|   |       |___[Alice]
+|   |   
+|   |___tv
+|       |___[ignored]
+|   
+|___np
+    |___det
+    |   |___[three]
+    |   
+    |___n
+        |___[people]
+YEP pos
+*************************************
+neg test 6 Alice ignored three people kissed Bob
+YEP neg
+*************************************
+pos test 7 the person that Bob kissed ignored Alice
+s
+|___vp
+|   |___np
+|   |   |___np
+|   |   |   |___det
+|   |   |   |   |___[the]
+|   |   |   |   
+|   |   |   |___n
+|   |   |       |___[person]
+|   |   |   
+|   |   |___rp
+|   |   |   |___[that]
+|   |   |   
+|   |   |___vp
+|   |       |___np
+|   |       |   |___n
+|   |       |       |___[Bob]
+|   |       |   
+|   |       |___tv
+|   |           |___[kissed]
+|   |   
+|   |___tv
+|       |___[ignored]
+|   
+|___np
+    |___n
+        |___[Alice]
+YEP pos
+*************************************
+pos test 8 the person that Alice kissed ignored Bob
+s
+|___vp
+|   |___np
+|   |   |___np
+|   |   |   |___det
+|   |   |   |   |___[the]
+|   |   |   |   
+|   |   |   |___n
+|   |   |       |___[person]
+|   |   |   
+|   |   |___rp
+|   |   |   |___[that]
+|   |   |   
+|   |   |___vp
+|   |       |___np
+|   |       |   |___n
+|   |       |       |___[Alice]
+|   |       |   
+|   |       |___tv
+|   |           |___[kissed]
+|   |   
+|   |___tv
+|       |___[ignored]
+|   
+|___np
+    |___n
+        |___[Bob]
+YEP pos
+*************************************
+neg test 9 the person that Alice kissed Bob ignored Alice
+YEP neg
+*************************************
+neg test 10 the person that Alice ignored Alice
+YEP neg
+*************************************
+neg test 11 the person that kissed Bob ignored Alice kissed Bob
+YEP neg
+*************************************
+pos test 12 Carol kissed the person that ignored Bob
+s
+|___vp
+|   |___np
+|   |   |___n
+|   |       |___[Carol]
+|   |   
+|   |___tv
+|       |___[kissed]
+|   
+|___np
+    |___np
+    |   |___det
+    |   |   |___[the]
+    |   |   
+    |   |___n
+    |       |___[person]
+    |   
+    |___rp
+    |   |___[that]
+    |   
+    |___vp
+        |___tv
+        |   |___[ignored]
+        |   
+        |___np
+            |___n
+                |___[Bob]
+YEP pos
+*************************************
+pos test 13 Bob ignored the person that Alice kissed
+s
+|___vp
+|   |___np
+|   |   |___n
+|   |       |___[Bob]
+|   |   
+|   |___tv
+|       |___[ignored]
+|   
+|___np
+    |___np
+    |   |___det
+    |   |   |___[the]
+    |   |   
+    |   |___n
+    |       |___[person]
+    |   
+    |___rp
+    |   |___[that]
+    |   
+    |___vp
+        |___np
+        |   |___n
+        |       |___[Alice]
+        |   
+        |___tv
+            |___[kissed]
+YEP pos
+*************************************
+pos test 14 the people that Bob kissed ignored the person that Alice kissed
+s
+|___vp
+|   |___np
+|   |   |___np
+|   |   |   |___det
+|   |   |   |   |___[the]
+|   |   |   |   
+|   |   |   |___n
+|   |   |       |___[people]
+|   |   |   
+|   |   |___rp
+|   |   |   |___[that]
+|   |   |   
+|   |   |___vp
+|   |       |___np
+|   |       |   |___n
+|   |       |       |___[Bob]
+|   |       |   
+|   |       |___tv
+|   |           |___[kissed]
+|   |   
+|   |___tv
+|       |___[ignored]
+|   
+|___np
+    |___np
+    |   |___det
+    |   |   |___[the]
+    |   |   
+    |   |___n
+    |       |___[person]
+    |   
+    |___rp
+    |   |___[that]
+    |   
+    |___vp
+        |___np
+        |   |___n
+        |       |___[Alice]
+        |   
+        |___tv
+            |___[kissed]
+YEP pos
+8 pos tests 7 neg tests
+ALL PASS
+

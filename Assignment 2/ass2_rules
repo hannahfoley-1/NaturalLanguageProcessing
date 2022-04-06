@@ -1,0 +1,27 @@
+%rules
+%sentence rules
+s --> np, vp
+s --> vp, np
+s --> np, rp, vp
+%other rules
+np --> np, rp, vp
+np --> det, n
+np --> n
+vp --> np, tv
+vp --> tv, np
+vp --> tv, n
+%names and nouns
+n --> [Alice]
+n --> [Bob]
+n --> [Carol]
+n --> [people]
+n --> [person]
+%verbs
+tv --> [kissed]
+tv --> [ignored]
+%determinants
+det --> [three]
+det --> [the]
+%relative pronoun
+rp --> [that]
+*initial(s)
